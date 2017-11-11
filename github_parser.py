@@ -14,7 +14,7 @@ def commit_checker(repository_url):
     # blocks = soup.find('rect',{"data-date":korean_date})
     blocks = soup.find_all('rect')
     last_block = blocks[len(blocks)-1]
-    if(last_block.get("fill") == "#7bc96f"):
-        return True
-    else:
+    if(last_block.get("fill") == "#ebedf0"):
         return False
+    else:
+        return True
