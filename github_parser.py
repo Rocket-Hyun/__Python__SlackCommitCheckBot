@@ -11,8 +11,10 @@ def commit_checker(repository_url):
     req = requests.get(repository_url)
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')
-    blocks = soup.find('rect',{"data-date":korean_date})
-    if(blocks.get("fill") == "#7bc96f"):
+    # blocks = soup.find('rect',{"data-date":korean_date})
+    blocks = soup.find_all('rect')
+    last_block = blocks[len(blocks)-1]
+    if(last_block.get("fill") == "#7bc96f"):
         return True
     else:
         return False
