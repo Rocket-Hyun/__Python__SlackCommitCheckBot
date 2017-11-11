@@ -20,4 +20,4 @@ message = " ".join(members_commit_check)
 
 token = os.environ['SLACK_TOKEN']
 slack = Slacker(token)
-slack.chat.post_message('#general', message, as_user=True)
+slack.chat.post_message('#test', message, as_user=True)
