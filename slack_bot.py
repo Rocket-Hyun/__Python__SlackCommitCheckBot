@@ -11,7 +11,7 @@ korean_time = datetime.now() + timedelta(hours=9)
 textfile = open("github_repositories.txt", "r", encoding="utf8")
 members_github = textfile.read()
 members_github_list = members_github.split(",")
-members_commit_check = ["★★★"+korean_time.strftime("%Y-%m-%d")+"의 커밋 결과★★★\n"]
+members_commit_check = ["★★★"+korean_time.strftime("%Y-%m-%d %H:%M")+"의 커밋 결과★★★\n"]
 for url in members_github_list:
     if gp.commit_checker(url):
         result = "완료"
@@ -21,8 +21,7 @@ for url in members_github_list:
     members_commit_check.append(username + "님의 커밋 결과: " + result +"\n")
 
 message = " ".join(members_commit_check)
-
 token = os.environ['SLACK_TOKEN']
 slack = Slacker(token)
-slack.chat.post_message('#test', message, as_user=True)
+slack.chat.post_message('#general', message, as_user=True)
 print(korean_time.strftime("%Y-%m-%d")+"의크론잡 완료\n")
