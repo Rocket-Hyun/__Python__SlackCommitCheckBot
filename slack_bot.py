@@ -25,3 +25,4 @@ message = " ".join(members_commit_check)
 token = os.environ['SLACK_TOKEN']
 slack = Slacker(token)
 slack.chat.post_message('#test', message, as_user=True)
+print(korean_time.strftime("%Y-%m-%d")+"의크론잡 완료\n")
