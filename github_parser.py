@@ -13,6 +13,7 @@ def commit_checker(repository_url, specific_date):
     soup = BeautifulSoup(html, 'html.parser')
     block = soup.find('rect',{"data-date":specific_date})
     commit_count =  block.get("data-count")
+    print(repository_url.split("/")[3] + "님 크롤링 중...")
 
     # blocks = soup.find_all('rect')
     # last_block = blocks[len(blocks)-1]
