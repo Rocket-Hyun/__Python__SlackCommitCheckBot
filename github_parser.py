@@ -3,18 +3,20 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 
-korean_time = datetime.now() + timedelta(hours=9)
-korean_date = korean_time.strftime("%Y-%m-%d")
+# korean_time = datetime.now() + timedelta(hours=9)
+# korean_date = korean_time.strftime("%Y-%m-%d")
 
-def commit_checker(repository_url):
+def commit_checker(repository_url, specific_date):
     # HTTP GET Request
     req = requests.get(repository_url)
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')
-    # blocks = soup.find('rect',{"data-date":korean_date})
-    blocks = soup.find_all('rect')
-    last_block = blocks[len(blocks)-1]
-    commit_count = last_block.get("data-count")
+    block = soup.find('rect',{"data-date":specific_date})
+    commit_count =  block.get("data-count")
+
+    # blocks = soup.find_all('rect')
+    # last_block = blocks[len(blocks)-1]
+    # commit_count = last_block.get("data-count")
     return commit_count
 
 
