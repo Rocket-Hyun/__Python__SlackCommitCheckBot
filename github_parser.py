@@ -14,7 +14,13 @@ def commit_checker(repository_url):
     # blocks = soup.find('rect',{"data-date":korean_date})
     blocks = soup.find_all('rect')
     last_block = blocks[len(blocks)-1]
-    if(last_block.get("fill") == "#ebedf0"):
-        return False
-    else:
-        return True
+    commit_count = last_block.get("data-count")
+    return commit_count
+
+
+if __name__ == "__main__":
+    textfile = open("github_repositories.txt", "r", encoding="utf8")
+    members_github = textfile.read()
+    members_github_list = members_github.split(",")
+    for user in members_github_list:
+        print(commit_checker(user))
