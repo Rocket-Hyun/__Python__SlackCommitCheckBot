@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 # utf 적용되는 서버에선 한국 시간 적용하려면 +9시간 해야함
 korean_time = datetime.now() + timedelta(hours=9)
 # 특정 날짜로 가고 싶을 때 사용
-specific_time = datetime.now() - timedelta(days=0)
+specific_time = datetime.now() - timedelta(days=1)
 
 # 깃헙 리포 주소들이 저장되어 있는 텍스트 파일 열어서 배열에 각각 저장
 textfile = open("github_repositories.txt", "r", encoding="utf8")
